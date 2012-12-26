@@ -1,6 +1,11 @@
 <html>
 <head>
 <title>Email Image Placeholder</title>
+<style type="text/css">
+#what-it-looks-like-enabled {
+	margin-top: 10px;
+}
+</style>
 </head>
 <body>
 	<form>
@@ -8,14 +13,16 @@
 		<input type="text"
 		       id="image-to-placehold"
 		       name="imageToPlacehold"
-		       value="reads-emails.jpg" />
+		       value="test-images/reads-emails.jpg" />
 
 		<label for="closing-tags">Closing Tags?</label>
 		<input type="checkbox" checked="checked" id="closing-tags" />
 
 		<label for="pixel-size">Pixel Size:</label>
 		<select id="pixel-size">
-			<option value="10">10</option>
+			<option value="2">2 - Caution: Content Length!</option>
+			<option value="5">5 - Caution: Content Length!</option>
+			<option value="10" selected="selected">10</option>
 			<option value="15">15</option>
 			<option value="20">20</option>
 			<option value="25">25</option>
@@ -42,7 +49,6 @@
 			    imgSrc = document.getElementById("image-to-placehold");
 
 			function convertImage(){
-
 				var eip = new EmailImagePlaceholder(
 					imgSrc.value,
 					parseInt(selPixelSize.options[selPixelSize.selectedIndex].value, 10),
