@@ -1,4 +1,4 @@
-# Email Image Placeholder
+# [Email Image Placeholder](http://www.pmnewell.com/eip/ "Working Version of Email Image Placeholder")
 
 I often get emails with huge images of really great art and design, that totally get the message across, except...
 
