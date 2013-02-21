@@ -116,10 +116,12 @@ a:hover {
 
 /* line 73, source/eip.scss */
 #wrapper {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 10px;
 }
 
-/* line 76, source/eip.scss */
+/* line 78, source/eip.scss */
 #content {
   margin-bottom: 20px;
   zoom: 1;
@@ -133,19 +135,14 @@ a:hover {
   font-size: 0;
   visibility: hidden;
 }
-/* line 80, source/eip.scss */
-#content em {
-  font-size: 75%;
-  font-style: italic;
-}
 
-/* line 86, source/eip.scss */
+/* line 83, source/eip.scss */
 #logo {
   float: left;
   margin: 0 10px 10px 0;
 }
 
-/* line 92, source/eip.scss */
+/* line 89, source/eip.scss */
 #inputs,
 #results {
   margin-top: 20px;
@@ -164,11 +161,10 @@ a:hover {
   visibility: hidden;
 }
 
-/* line 101, source/eip.scss */
+/* line 98, source/eip.scss */
 .input-wrapper,
 .output-wrapper {
   zoom: 1;
-  height: 32pt;
 }
 /* line 17, source/eip.scss */
 .input-wrapper:after,
@@ -180,19 +176,28 @@ a:hover {
   font-size: 0;
   visibility: hidden;
 }
-/* line 105, source/eip.scss */
+/* line 101, source/eip.scss */
 .input-wrapper label,
 .output-wrapper label {
   float: left;
   margin-right: 10px;
-  width: 250px;
+  width: 200px;
+  font-family: "Rancho", cursive;
+  color: #c5d6f3;
+  font-size: 24pt;
+  line-height: 32pt;
+}
+/* line 110, source/eip.scss */
+.input-wrapper label.for-checkbox,
+.output-wrapper label.for-checkbox {
+  float: none;
 }
 
-/* line 112, source/eip.scss */
+/* line 116, source/eip.scss */
 .markup {
   height: 100px;
 }
-/* line 115, source/eip.scss */
+/* line 119, source/eip.scss */
 .markup textarea {
   width: 400px;
   height: 100px;
@@ -200,17 +205,17 @@ a:hover {
   font-family: "Courier New", Courier, monospace;
 }
 
-/* line 123, source/eip.scss */
+/* line 127, source/eip.scss */
 .url input {
   width: 400px;
 }
 
-/* line 128, source/eip.scss */
+/* line 132, source/eip.scss */
 .content-length input {
   width: 75px;
 }
 
-/* line 133, source/eip.scss */
+/* line 137, source/eip.scss */
 #what-it-looks-like {
   zoom: 1;
   display: none;
@@ -224,17 +229,17 @@ a:hover {
   font-size: 0;
   visibility: hidden;
 }
-/* line 137, source/eip.scss */
+/* line 141, source/eip.scss */
 #what-it-looks-like.success {
   display: block;
 }
-/* line 141, source/eip.scss */
+/* line 145, source/eip.scss */
 #what-it-looks-like h6 {
   display: inline;
   margin: 10px;
   font-size: 20pt;
 }
-/* line 146, source/eip.scss */
+/* line 150, source/eip.scss */
 #what-it-looks-like .looks {
   position: relative;
   float: left;
@@ -243,20 +248,29 @@ a:hover {
   padding: 10px;
   text-align: center;
 }
+/* line 158, source/eip.scss */
+#what-it-looks-like #transparency-warning {
+  clear: both;
+}
+/* line 161, source/eip.scss */
+#what-it-looks-like #transparency-warning em {
+  font-size: 75%;
+  font-style: italic;
+}
 
-/* line 156, source/eip.scss */
+/* line 168, source/eip.scss */
 #afterword {
   margin-top: 30px;
   border-top: 1px solid #cccccc;
   padding-top: 20px;
   font-size: 12.8pt;
 }
-/* line 162, source/eip.scss */
+/* line 174, source/eip.scss */
 #afterword h3 {
   font-size: 17.6pt;
 }
 
-/* line 167, source/eip.scss */
+/* line 179, source/eip.scss */
 #hat-tip {
   margin-top: 50px;
 }

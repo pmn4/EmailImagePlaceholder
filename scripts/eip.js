@@ -26,7 +26,7 @@ window.onload = function(){
 	imgSrc.onblur = imgSrc.onchange = chkClosingTags.onchange = selPixelSize.onchange = function(){
 		convertImage();
 	};
-	imgSrc.onclick = taMarkup.onfocus = function() {
+	imgSrc.onclick = taMarkup.onclick = function() {
 		this.select();
 	};
 }

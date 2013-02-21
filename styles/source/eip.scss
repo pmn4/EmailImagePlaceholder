@@ -71,16 +71,13 @@ a {
 }
 
 #wrapper {
+	max-width: 800px;
+	margin: 0 auto;
 	padding: $general-spacing;
 }
 #content {
 	margin-bottom: 2 * $general-spacing;
 	@include clearfix;
-
-	em {
-		font-size: 75%;
-		font-style: italic;
-	}
 }
 
 #logo {
@@ -100,12 +97,19 @@ a {
 .input-wrapper,
 .output-wrapper {
 	@include clearfix;
-	height: 2 * $font-size;
 
 	label {
 		float: left;
 		margin-right: $general-spacing;
-		width: 250px;
+		width: 200px;
+		font-family: $higlight-font-family;
+		color: $highlight-color;
+		font-size: 1.5 * $font-size;
+		line-height: 2 * $font-size;
+
+		&.for-checkbox {
+			float: none;
+		}
 	}
 }
 $input-full-width: 400px;
@@ -150,6 +154,14 @@ $input-full-width: 400px;
 		border: 1px solid $font-color;
 		padding: $general-spacing;
 		text-align: center;
+	}
+	#transparency-warning {
+		clear: both;
+
+		em {
+			font-size: 75%;
+			font-style: italic;
+		}
 	}
 }
 

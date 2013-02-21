@@ -20,11 +20,6 @@
 				sure, you can embed images in your email, but that can make email very large very quickly.
 			</p>
 			<p>
-				<em>
-					a word of warning: image transparency yields some unfortunate results.
-				</em>
-			</p>
-			<p>
 				start by putting your image's url in the field below.
 			</p>
 		</div>
@@ -35,8 +30,9 @@
 			</div>
 
 			<div class="input-wrapper">
-				<label for="closing-tags" title="whether to include closing html tags">closing tags?</label>
+				<label>&nbsp;</label>
 				<input type="checkbox" checked="checked" id="closing-tags" />
+				<label class="for-checkbox" for="closing-tags" title="whether to include closing html tags">closing tags?</label>
 			</div>
 
 			<div class="input-wrapper">
@@ -71,6 +67,11 @@
 					<div id="what-it-looks-like-enabled"></div>
 					<h6>when images are enabled</h6>
 				</div>
+				<p id="transparency-warning">
+					<em>
+						a word of warning: image transparency yields some unfortunate results.
+					</em>
+				</p>
 			</div>
 		</div>
 
@@ -95,5 +96,17 @@
 	<script src="scripts/eip.js"></script>
 
 	<a href="https://github.com/pmn4/EmailImagePlaceholder"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-12173862-10']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
 </body>
 </html>
