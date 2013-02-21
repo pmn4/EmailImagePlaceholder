@@ -36,6 +36,12 @@
 		this.emailImage = arguments.length >= 2 ? new EmailImage(this.url, this.pixelSize, onImageLoad) : null;
 		this.closingTags = arguments.length >= 4 ? closingTags : true;
 		this.scale = scale || 1.0;
+		this.error = undefined;
+	};
+
+	EmailImagePlaceholder.prototype.success = function() {
+		// this code should probably set errors so that this method doesn't always return true
+		return !this.error;
 	};
 
 	EmailImagePlaceholder.prototype.error = function(msg){
@@ -118,7 +124,8 @@
 			}
 		};
 
-		this.image.src = this.url;
+		this.image.crossOrigin = 'anonymous';
+		this.image.src = "http://www.corsproxy.com/" + this.url.replace(/^https?:\/\//i, "");
 	};
 
 	EmailImage.prototype.getImageSize = function(){

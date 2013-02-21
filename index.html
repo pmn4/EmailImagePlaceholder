@@ -1,72 +1,98 @@
 <html>
 <head>
 <title>Email Image Placeholder</title>
-<style type="text/css">
-#what-it-looks-like-enabled {
-	margin-top: 10px;
-}
-</style>
+<link href='http://fonts.googleapis.com/css?family=Gudea|Rancho' rel='stylesheet' type='text/css'>
+<link href="styles/eip.css" rel="stylesheet" />
 </head>
 <body>
-	<form>
-		<label for="image-to-placehold">Image To Placehold:</label>
-		<input type="text"
-		       id="image-to-placehold"
-		       name="imageToPlacehold"
-		       value="test-images/reads-emails.jpg" />
-
-		<label for="closing-tags">Closing Tags?</label>
-		<input type="checkbox" checked="checked" id="closing-tags" />
-
-		<label for="pixel-size">Pixel Size:</label>
-		<select id="pixel-size">
-			<option value="2">2 - Caution: Content Length!</option>
-			<option value="5">5 - Caution: Content Length!</option>
-			<option value="10" selected="selected">10</option>
-			<option value="15">15</option>
-			<option value="20">20</option>
-			<option value="25">25</option>
-			<option value="50">50</option>
-		</select>
-	</form>
-
-	<div id="results">
-		<textarea id="email-code"></textarea>
-		<label for="content-length">Content-Length:</label>
-		<input id="content-length" value="" />
-
-		<div id="what-it-looks-like">
-			<div id="what-it-looks-like-blocked"></div>
-			<div id="what-it-looks-like-enabled"></div>
+	<div id="wrapper">
+		<div id="content">
+			<h1>Email Image Placeholder</h1>
+			<img src="images/alt-text.png" id="logo" />
+			<p>
+				alt text is super lame.
+			</p>
+			<p>
+				wouldn't it be nice if you could <strong>replace blocked or broken images</strong> with the suggestion of the image?
+			</p>
+			<p>
+				sure, you can embed images in your email, but that can make email very large very quickly.
+			</p>
+			<p>
+				<em>
+					a word of warning: image transparency yields some unfortunate results.
+				</em>
+			</p>
+			<p>
+				start by putting your image's url in the field below.
+			</p>
 		</div>
-	</results>
+		<form action="javascript:void(0);" id="inputs">
+			<div class="input-wrapper url">
+				<label for="image-to-placehold" title="url for the image you would like to placehold"><strong>image to placehold:</strong></label>
+				<input type="text" id="image-to-placehold" name="imagetoplacehold" placeholder="image url..." />
+			</div>
 
-	<script src="EmailImagePlaceholder.js"></script>
-	<script>
-		window.onload = function(){
-			var chkClosingTags = document.getElementById("closing-tags"),
-			    selPixelSize = document.getElementById("pixel-size"),
-			    imgSrc = document.getElementById("image-to-placehold");
+			<div class="input-wrapper">
+				<label for="closing-tags" title="whether to include closing html tags">closing tags?</label>
+				<input type="checkbox" checked="checked" id="closing-tags" />
+			</div>
 
-			function convertImage(){
-				var eip = new EmailImagePlaceholder(
-					imgSrc.value,
-					parseInt(selPixelSize.options[selPixelSize.selectedIndex].value, 10),
-					function(){
-						var html = eip.getHtml();
-						document.getElementById("email-code").value = html;
-						document.getElementById("content-length").value = html.length;
-						document.getElementById("what-it-looks-like-blocked").innerHTML = eip.getHtml(false);
-						document.getElementById("what-it-looks-like-enabled").innerHTML = html;
-					},
-					chkClosingTags.checked,
-					1.0);
-			};
+			<div class="input-wrapper">
+				<label for="pixel-size" title="the smaller the pixels, the larger in size the rmail will become">pixel size:</label>
+				<select id="pixel-size">
+					<option value="2">2 - caution: content length!</option>
+					<option value="5">5 - caution: content length!</option>
+					<option value="10" selected="selected">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="25">25</option>
+					<option value="50">50</option>
+				</select>
+			</div>
+		</form>
 
-			imgSrc.onblur = imgSrc.onchange = chkClosingTags.onchange = selPixelSize.onchange = function(){
-				convertImage();
-			};
-		}
-	</script>
+		<div id="results">
+			<div class="output-wrapper content-length">
+				<label for="content-length" title="content length of resulting markup">content-length:</label>
+				<input id="content-length" value="" />
+			</div>
+			<div class="output-wrapper markup">
+				<label for="email-code" title="paste this into your email in place of your image">resulting markup:</label>
+				<textarea id="email-code"></textarea>
+			</div>
+			<div id="what-it-looks-like">
+				<div class="looks">
+					<div id="what-it-looks-like-blocked"></div>
+					<h6>when images are blocked</h6>
+				</div>
+				<div class="looks">
+					<div id="what-it-looks-like-enabled"></div>
+					<h6>when images are enabled</h6>
+				</div>
+			</div>
+		</div>
+
+		<div id="afterword">
+			<h3>how it works:</h3>
+			<p>
+				<strong>an absolutely-positioned table</strong> uses your image as a background image (plus some other, totally legit, css magic). if it doesn't load, this table is transparent, showing the underlying markup.
+			</p>
+			<p>
+				<strong>the underlying image</strong> is a table whose cells are &lt;pixel-size&gt; x &lt;pixel-size&gt; and bgcolor is a sample of the image. the result is a pixelated version of your image.
+			</p>
+			<p>
+				<strong>if you can "draw" your image with html</strong>, or something that is close enough to make your point, replace the second table with that markup.
+			</p>
+			<p id="hat-tip">
+				<strong>h/t</strong> to <a href="http://www.emailonacid.com/">Email on Acid</a> for their <a href="http://www.emailonacid.com/email-preview/mozify">Mozify</a> tool which inspired this.  #emailgeniuses. another to <a href="http://www.corsproxy.com/">CORS Proxy</a> which allows this javascript code to access your images (on domains other than this one) otherwise blocked by the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same-origin policy</a>.
+			</p>
+		</div>
+	</div>
+
+	<script src="scripts/email-image-placeholder.js"></script>
+	<script src="scripts/eip.js"></script>
+
+	<a href="https://github.com/pmn4/EmailImagePlaceholder"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
 </body>
 </html>

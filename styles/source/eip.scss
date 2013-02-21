@@ -1,0 +1,169 @@
+// reset style
+@import "compass/reset";
+
+
+$general-spacing: 10px;
+$background-color: #222;
+$font-color: #ccc;
+$font-size: 16pt;
+$highlight-color: #c5d6f3;
+$highlight2-color: #58ae39;
+$font-family: 'Gudea', sans-serif;
+$higlight-font-family: 'Rancho', cursive;
+
+
+@mixin clearfix ($after-clear: true) {
+    zoom:1;
+    &:after{
+        content: ".";
+        display: block;
+        height: 0;
+        @if ($after-clear) {
+            clear: both;
+        }
+        font-size: 0;
+        visibility: hidden;
+    }
+}
+
+
+
+body {
+	background: $background-color;
+	font-family: $font-family;
+	color: $font-color;
+	font-size: $font-size;
+	line-height: 1.2 * $font-size;
+}
+
+h1, h2, h3, h4, h5, h6, .title {
+	font-family: $higlight-font-family;
+	color: $highlight-color;
+}
+
+input, select, textarea {
+	font-family: $font-family;
+	color: $background-color;
+	font-size: $font-size;
+	background: $font-color;
+}
+
+h1 {
+	font-size: 2.5 * $font-size;
+	line-height: 1.2 * 2.5 * $font-size;
+	$logo-image-width: 200px;
+	padding-left: $logo-image-width + $general-spacing;
+}
+p {
+	margin-top: $general-spacing;
+}
+em,
+strong {
+	color: $highlight2-color;
+}
+a {
+	color: $highlight-color;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+#wrapper {
+	padding: $general-spacing;
+}
+#content {
+	margin-bottom: 2 * $general-spacing;
+	@include clearfix;
+
+	em {
+		font-size: 75%;
+		font-style: italic;
+	}
+}
+
+#logo {
+	float: left;
+	margin: 0 $general-spacing $general-spacing 0;
+}
+
+#inputs,
+#results {
+	margin-top: 2 * $general-spacing;
+	border-top: 1px solid $font-color;
+	padding-top: 2 * $general-spacing;
+
+	@include clearfix;
+}
+
+.input-wrapper,
+.output-wrapper {
+	@include clearfix;
+	height: 2 * $font-size;
+
+	label {
+		float: left;
+		margin-right: $general-spacing;
+		width: 250px;
+	}
+}
+$input-full-width: 400px;
+.markup {
+	$textarea-height: 100px;
+	height: $textarea-height;
+	textarea {
+		width: $input-full-width;
+		height: $textarea-height;
+		font-size: 10px;
+		font-family: "Courier New", Courier, monospace;
+	}
+}
+.url {
+	input {
+		width: $input-full-width;
+	}
+}
+.content-length {
+	input {
+		width: 75px;
+	}
+}
+
+#what-it-looks-like {
+	@include clearfix;
+	display: none;
+
+	&.success {
+		display: block;
+	}
+
+	h6 {
+		display: inline;
+		margin: $general-spacing;
+		font-size: 1.25 * $font-size;
+	}
+	.looks {
+		position: relative;
+		float: left;
+		margin: $general-spacing $general-spacing 0 0;
+		border: 1px solid $font-color;
+		padding: $general-spacing;
+		text-align: center;
+	}
+}
+
+#afterword {
+	margin-top: 3 * $general-spacing;
+	border-top: 1px solid $font-color;
+	padding-top: 2 * $general-spacing;
+	font-size: 0.8 * $font-size;
+
+	h3 {
+		font-size: 1.1 * $font-size;
+	}
+}
+
+#hat-tip {
+	margin-top: 5 * $general-spacing;
+}

@@ -16,15 +16,15 @@ _(I will stand up a site shortly so you don't need to code at all.  tweet at me 
 ## Here is the gist
 
 ### You Want Your Readers to See This
-![Blocked Email Images](/pmn4/EmailImagePlaceholder/blob/master/readme/original-email.png?raw=true)
+![Blocked Email Images](./readme/original-email.png?raw=true)
 
 ### But Your Readers Blocks Images, so They See This
-![Blocked Email Images](/pmn4/EmailImagePlaceholder/blob/master/readme/without-placeholders.png?raw=true)
+![Blocked Email Images](./readme/without-placeholders.png?raw=true)
 
 ### Instead, Your Readers Will See This
 (even with images blocked)
 
-![Pixelated Image Teaser](/pmn4/EmailImagePlaceholder/blob/master/readme/without-placeholders-annotations.png?raw=true)
+![Pixelated Image Teaser](./readme/without-placeholders-annotations.png?raw=true)
 
 
 
