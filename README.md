@@ -10,7 +10,8 @@ HTML emails are cool, but you've got to earn my images enabled trust.  And if I'
 
 If there is something -- usually anything -- to suggest I might like the images, I will enable them.  So entice me (by using this code!)
 
-_(I will stand up a site shortly so you don't need to code at all.  tweet at me to light a fire... [@pnewell4](http://twitter.com/pnewell4))_
+
+Give it a try: [http://pmnewell.com/eip/](http://www.pmnewell.com/eip/ "Working Version of Email Image Placeholder")
 
 
 ## Here is the gist
