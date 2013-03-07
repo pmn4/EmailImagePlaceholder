@@ -1,5 +1,6 @@
 // reset style
-@import "compass/reset";
+@import "compass/reset",
+	"compass/css3";
 
 
 $general-spacing: 10px;
@@ -69,6 +70,9 @@ a {
 		text-decoration: underline;
 	}
 }
+label {
+	cursor: hand;
+}
 
 #wrapper {
 	max-width: 800px;
@@ -86,12 +90,33 @@ a {
 }
 
 #inputs,
-#results {
-	margin-top: 2 * $general-spacing;
+#results,
+#preview,
+#afterword {
+	position: relative;
+	margin-top: $general-spacing;
 	border-top: 1px solid $font-color;
-	padding-top: 2 * $general-spacing;
+	padding-top: $general-spacing;
+	padding-left: $general-spacing;
+	@include background-image(linear-gradient(lighten($background-color, 5%), $background-color 100px));
 
 	@include clearfix;
+
+	.ui-label {
+		position: absolute;
+		top: 0;
+		right: 2 * $general-spacing;
+		padding: $general-spacing / 2 $general-spacing * 2;
+		@include border-bottom-radius($general-spacing / 2);
+		border: 1px solid $font-color;
+		border-top: 0;
+		width: 100px;
+		background-color: $background-color;
+		color: $highlight-color;
+		font-family: $higlight-font-family;
+		font-weight: bold;
+		text-align: center
+	}
 }
 
 .input-wrapper,
@@ -113,6 +138,7 @@ a {
 	}
 }
 $input-full-width: 400px;
+.placeholder-html,
 .markup {
 	$textarea-height: 100px;
 	height: $textarea-height;
@@ -134,7 +160,7 @@ $input-full-width: 400px;
 	}
 }
 
-#what-it-looks-like {
+#preview {
 	@include clearfix;
 	display: none;
 
@@ -166,9 +192,8 @@ $input-full-width: 400px;
 }
 
 #afterword {
-	margin-top: 3 * $general-spacing;
-	border-top: 1px solid $font-color;
-	padding-top: 2 * $general-spacing;
+	margin-top: 4 * $general-spacing;
+	padding-top: 3 * $general-spacing;
 	font-size: 0.8 * $font-size;
 
 	h3 {
@@ -178,4 +203,8 @@ $input-full-width: 400px;
 
 #hat-tip {
 	margin-top: 5 * $general-spacing;
+}
+
+#closing-tags {
+	margin-top: 10px;
 }

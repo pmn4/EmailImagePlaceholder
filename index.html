@@ -24,19 +24,19 @@
 			</p>
 		</div>
 		<form action="javascript:void(0);" id="inputs">
+			<div class="ui-label">inputs</div>
 			<div class="input-wrapper url">
 				<label for="image-to-placehold" title="url for the image you would like to placehold"><strong>image to placehold:</strong></label>
 				<input type="text" id="image-to-placehold" name="imagetoplacehold" placeholder="image url..." />
 			</div>
 
 			<div class="input-wrapper">
-				<label>&nbsp;</label>
+				<label for="closing-tags" title="whether to include closing html tags">closing tags?</label>
 				<input type="checkbox" checked="checked" id="closing-tags" />
-				<label class="for-checkbox" for="closing-tags" title="whether to include closing html tags">closing tags?</label>
 			</div>
 
 			<div class="input-wrapper">
-				<label for="pixel-size" title="the smaller the pixels, the larger in size the rmail will become">pixel size:</label>
+				<label for="pixel-size" title="the smaller the pixels, the larger in size the email will become">pixel size:</label>
 				<select id="pixel-size">
 					<option value="2">2 - caution: content length!</option>
 					<option value="5">5 - caution: content length!</option>
@@ -47,9 +47,15 @@
 					<option value="50">50</option>
 				</select>
 			</div>
+
+			<div class="input-wrapper placeholder-html">
+				<label for="placeholder-html" title="(optional) instead of using the pixelated image, use this html">placeholder html:</label>
+				<textarea id="placeholder-html"></textarea>
+			</div>
 		</form>
 
 		<div id="results">
+			<div class="ui-label">results</div>
 			<div class="output-wrapper content-length">
 				<label for="content-length" title="content length of resulting markup">content-length:</label>
 				<input id="content-length" value="" />
@@ -58,33 +64,34 @@
 				<label for="email-code" title="paste this into your email in place of your image">resulting markup:</label>
 				<textarea id="email-code"></textarea>
 			</div>
-			<div id="what-it-looks-like">
-				<div class="looks">
-					<div id="what-it-looks-like-blocked"></div>
-					<h6>when images are blocked</h6>
-				</div>
-				<div class="looks">
-					<div id="what-it-looks-like-enabled"></div>
-					<h6>when images are enabled</h6>
-				</div>
-				<p id="transparency-warning">
-					<em>
-						a word of warning: image transparency yields some unfortunate results.
-					</em>
-				</p>
+		</div>
+		<div id="preview">
+			<div class="ui-label">preview</div>
+			<div class="looks">
+				<div id="what-it-looks-like-blocked"></div>
+				<h6>when images are blocked</h6>
 			</div>
+			<div class="looks">
+				<div id="what-it-looks-like-enabled"></div>
+				<h6>when images are enabled</h6>
+			</div>
+			<p id="transparency-warning">
+				<em>
+					a word of warning: image transparency yields some unfortunate results.
+				</em>
+			</p>
 		</div>
 
 		<div id="afterword">
-			<h3>how it works:</h3>
+			<div class="ui-label">how it works</div>
 			<p>
-				<strong>an absolutely-positioned table</strong> uses your image as a background image (plus some other, totally legit, css magic). if it doesn't load, this table is transparent, showing the underlying markup.
+				<strong>a 0x0 div with overflow visible</strong> contans a table which uses your image as a background image. if it doesn't load, this table is transparent, showing the underlying markup.
 			</p>
 			<p>
 				<strong>the underlying image</strong> is a table whose cells are &lt;pixel-size&gt; x &lt;pixel-size&gt; and bgcolor is a sample of the image. the result is a pixelated version of your image.
 			</p>
 			<p>
-				<strong>if you can "draw" your image with html</strong>, or something that is close enough to make your point, replace the second table with that markup.
+				<strong>if you can "draw" your image with html</strong>, or something that is close enough to make your point, enter that html into the <label for="placeholder-html">"placeholder html" field</label>.
 			</p>
 			<p id="hat-tip">
 				<strong>h/t</strong> to <a href="http://www.emailonacid.com/">Email on Acid</a> for their <a href="http://www.emailonacid.com/email-preview/mozify">Mozify</a> tool which inspired this.  #emailgeniuses. another to <a href="http://www.corsproxy.com/">CORS Proxy</a> which allows this javascript code to access your images (on domains other than this one) otherwise blocked by the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same-origin policy</a>.

@@ -24,16 +24,56 @@
 		return emailImage.colors[x][y];
 	};
 
-	var _emailImageMagic = function(url, width, height, placeholderHtml){
-		return "<div style=\"width:0px;height:0px;overflow:visible;float:left;position:absolute;\"><table cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td background=\"" + url + "\"><div style=\"width:" + width + "px;height:" + height + "px\"></div></td></tr></tbody></table></div>" + placeholderHtml;
+	var _emailHtmlBlockMagic = function(placeholderHtml, width, height, url){
+		return "<div style=\"width:0;height:0;overflow:visible;float:left;\"><table cellpadding=0 cellspacing=0 width=" + width + " height=" + height + " background=\"" + url +"\"><tbody><tr><td>" + placeholderHtml + "</td></tr></tbody></table></div>";
+	}
+	var _emailImageMagic = function(url, width, height){
+		return _emailHtmlBlockMagic("<div style=\"width:" + width + "px;height:" + height + "px\"></div>", width, height, url);
 	}
 
+	EmailImageHtmlPlaceholder = function(url, placeholderHtml, onImageLoad, scale) {
+		var _this = this;
+		this.url = url;
+		this.placeholderHtml = placeholderHtml;
+		this.scale = scale || 1.0;
+		this.emailImage = new EmailImage(this.url, 1, function(){ return onImageLoad(_this); });
+		this.error = undefined;
+	}
 
+	EmailImageHtmlPlaceholder.prototype.success = function() {
+		// this code should probably set errors so that this method doesn't always return true
+		return !this.error;
+	};
+
+	EmailImageHtmlPlaceholder.prototype.error = function(msg){
+		this.error = msg;
+		return null;
+	}
+
+	EmailImageHtmlPlaceholder.prototype.getEmailImage = function(){
+		return this.emailImage;
+	}
+
+	EmailImageHtmlPlaceholder.prototype.getHtml = function(useEmailWrapper) {
+		useEmailWrapper = arguments.length >= 1 ? useEmailWrapper : true;
+
+		if(!this.emailImage) return this.error("EmailImage has not been initialized");
+
+		var dimensions = this.emailImage.getOriginalImageSize();
+
+		if(!dimensions) return this.error("Could not get image dimensions");
+
+		var html = "<table width=" + Math.round(this.scale * dimensions.w) + " height=" + Math.round(this.scale * dimensions.h) + " cellpadding=0 cellspacing=0><tr><td><b></b></td></tr></table>";
+		if(useEmailWrapper)
+			html = _emailImageMagic(this.url, dimensions.w, dimensions.h) + html;
+		return _emailHtmlBlockMagic(this.placeholderHtml, dimensions.w, dimensions.h) + html;
+	};
 
 	EmailImagePlaceholder = function(url, pixelSize, onImageLoad, closingTags, scale) {
+		var _this = this;
 		this.url = url;
 		this.pixelSize = arguments.length >= 2 ? pixelSize : 10;
-		this.emailImage = arguments.length >= 2 ? new EmailImage(this.url, this.pixelSize, onImageLoad) : null;
+		this.emailImage = arguments.length >= 2 ? new EmailImage(this.url, this.pixelSize, function(){ return onImageLoad(_this); }) : null;
 		this.closingTags = arguments.length >= 4 ? closingTags : true;
 		this.scale = scale || 1.0;
 		this.error = undefined;
@@ -80,7 +120,9 @@
 		}
 
 		html += "</table>";
-		return useEmailWrapper ? _emailImageMagic(this.url, dimensions.w, dimensions.h, html) : html;
+		if(useEmailWrapper)
+			html = _emailImageMagic(this.url, dimensions.w, dimensions.h) + html;
+		return html;
 	};
 
 	EmailImagePlaceholder.prototype.getBase64 = function(useEmailWrapper) {
@@ -89,7 +131,10 @@
 		var dimensions = this.emailImage.getOriginalImageSize();
 
 		var html = "<img src=\"" + this.emailImage.getCanvas().toDataURL("image/png") + "\" height=" + Math.round(this.scale * dimensions.h) + " />";
-		return useEmailWrapper ? _emailImageMagic(this.url, dimensions.w, dimensions.h, html) : html;
+
+		if(useEmailWrapper)
+			html = _emailImageMagic(this.url, dimensions.w, dimensions.h) + html;
+		return html;
 	}
 
 	/*

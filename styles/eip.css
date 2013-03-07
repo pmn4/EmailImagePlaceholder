@@ -63,7 +63,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 31, source/eip.scss */
+/* line 32, source/eip.scss */
 body {
   background: #222222;
   font-family: "Gudea", sans-serif;
@@ -72,13 +72,13 @@ body {
   line-height: 19.2pt;
 }
 
-/* line 39, source/eip.scss */
+/* line 40, source/eip.scss */
 h1, h2, h3, h4, h5, h6, .title {
   font-family: "Rancho", cursive;
   color: #c5d6f3;
 }
 
-/* line 44, source/eip.scss */
+/* line 45, source/eip.scss */
 input, select, textarea {
   font-family: "Gudea", sans-serif;
   color: #222222;
@@ -86,47 +86,52 @@ input, select, textarea {
   background: #cccccc;
 }
 
-/* line 51, source/eip.scss */
+/* line 52, source/eip.scss */
 h1 {
   font-size: 40pt;
   line-height: 48pt;
   padding-left: 210px;
 }
 
-/* line 57, source/eip.scss */
+/* line 58, source/eip.scss */
 p {
   margin-top: 10px;
 }
 
-/* line 61, source/eip.scss */
+/* line 62, source/eip.scss */
 em,
 strong {
   color: #58ae39;
 }
 
-/* line 64, source/eip.scss */
+/* line 65, source/eip.scss */
 a {
   color: #c5d6f3;
   text-decoration: none;
 }
-/* line 68, source/eip.scss */
+/* line 69, source/eip.scss */
 a:hover {
   text-decoration: underline;
 }
 
 /* line 73, source/eip.scss */
+label {
+  cursor: hand;
+}
+
+/* line 77, source/eip.scss */
 #wrapper {
   max-width: 800px;
   margin: 0 auto;
   padding: 10px;
 }
 
-/* line 78, source/eip.scss */
+/* line 82, source/eip.scss */
 #content {
   margin-bottom: 20px;
   zoom: 1;
 }
-/* line 17, source/eip.scss */
+/* line 18, source/eip.scss */
 #content:after {
   content: ".";
   display: block;
@@ -136,23 +141,34 @@ a:hover {
   visibility: hidden;
 }
 
-/* line 83, source/eip.scss */
+/* line 87, source/eip.scss */
 #logo {
   float: left;
   margin: 0 10px 10px 0;
 }
 
-/* line 89, source/eip.scss */
+/* line 95, source/eip.scss */
 #inputs,
-#results {
-  margin-top: 20px;
+#results,
+#preview,
+#afterword {
+  position: relative;
+  margin-top: 10px;
   border-top: 1px solid #cccccc;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-left: 10px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100, color-stop(0%, #2f2f2f), color-stop(100%, #222222));
+  background-image: -webkit-linear-gradient(#2f2f2f, #222222 100px);
+  background-image: -moz-linear-gradient(#2f2f2f, #222222 100px);
+  background-image: -o-linear-gradient(#2f2f2f, #222222 100px);
+  background-image: linear-gradient(#2f2f2f, #222222 100px);
   zoom: 1;
 }
-/* line 17, source/eip.scss */
+/* line 18, source/eip.scss */
 #inputs:after,
-#results:after {
+#results:after,
+#preview:after,
+#afterword:after {
   content: ".";
   display: block;
   height: 0;
@@ -160,13 +176,37 @@ a:hover {
   font-size: 0;
   visibility: hidden;
 }
+/* line 105, source/eip.scss */
+#inputs .ui-label,
+#results .ui-label,
+#preview .ui-label,
+#afterword .ui-label {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  padding: 5px 20px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #cccccc;
+  border-top: 0;
+  width: 100px;
+  background-color: #222222;
+  color: #c5d6f3;
+  font-family: "Rancho", cursive;
+  font-weight: bold;
+  text-align: center;
+}
 
-/* line 98, source/eip.scss */
+/* line 123, source/eip.scss */
 .input-wrapper,
 .output-wrapper {
   zoom: 1;
 }
-/* line 17, source/eip.scss */
+/* line 18, source/eip.scss */
 .input-wrapper:after,
 .output-wrapper:after {
   content: ".";
@@ -176,7 +216,7 @@ a:hover {
   font-size: 0;
   visibility: hidden;
 }
-/* line 101, source/eip.scss */
+/* line 126, source/eip.scss */
 .input-wrapper label,
 .output-wrapper label {
   float: left;
@@ -187,17 +227,19 @@ a:hover {
   font-size: 24pt;
   line-height: 32pt;
 }
-/* line 110, source/eip.scss */
+/* line 135, source/eip.scss */
 .input-wrapper label.for-checkbox,
 .output-wrapper label.for-checkbox {
   float: none;
 }
 
-/* line 116, source/eip.scss */
+/* line 142, source/eip.scss */
+.placeholder-html,
 .markup {
   height: 100px;
 }
-/* line 119, source/eip.scss */
+/* line 145, source/eip.scss */
+.placeholder-html textarea,
 .markup textarea {
   width: 400px;
   height: 100px;
@@ -205,23 +247,23 @@ a:hover {
   font-family: "Courier New", Courier, monospace;
 }
 
-/* line 127, source/eip.scss */
+/* line 153, source/eip.scss */
 .url input {
   width: 400px;
 }
 
-/* line 132, source/eip.scss */
+/* line 158, source/eip.scss */
 .content-length input {
   width: 75px;
 }
 
-/* line 137, source/eip.scss */
-#what-it-looks-like {
+/* line 163, source/eip.scss */
+#preview {
   zoom: 1;
   display: none;
 }
-/* line 17, source/eip.scss */
-#what-it-looks-like:after {
+/* line 18, source/eip.scss */
+#preview:after {
   content: ".";
   display: block;
   height: 0;
@@ -229,18 +271,18 @@ a:hover {
   font-size: 0;
   visibility: hidden;
 }
-/* line 141, source/eip.scss */
-#what-it-looks-like.success {
+/* line 167, source/eip.scss */
+#preview.success {
   display: block;
 }
-/* line 145, source/eip.scss */
-#what-it-looks-like h6 {
+/* line 171, source/eip.scss */
+#preview h6 {
   display: inline;
   margin: 10px;
   font-size: 20pt;
 }
-/* line 150, source/eip.scss */
-#what-it-looks-like .looks {
+/* line 176, source/eip.scss */
+#preview .looks {
   position: relative;
   float: left;
   margin: 10px 10px 0 0;
@@ -248,29 +290,33 @@ a:hover {
   padding: 10px;
   text-align: center;
 }
-/* line 158, source/eip.scss */
-#what-it-looks-like #transparency-warning {
+/* line 184, source/eip.scss */
+#preview #transparency-warning {
   clear: both;
 }
-/* line 161, source/eip.scss */
-#what-it-looks-like #transparency-warning em {
+/* line 187, source/eip.scss */
+#preview #transparency-warning em {
   font-size: 75%;
   font-style: italic;
 }
 
-/* line 168, source/eip.scss */
+/* line 194, source/eip.scss */
 #afterword {
-  margin-top: 30px;
-  border-top: 1px solid #cccccc;
-  padding-top: 20px;
+  margin-top: 40px;
+  padding-top: 30px;
   font-size: 12.8pt;
 }
-/* line 174, source/eip.scss */
+/* line 199, source/eip.scss */
 #afterword h3 {
   font-size: 17.6pt;
 }
 
-/* line 179, source/eip.scss */
+/* line 204, source/eip.scss */
 #hat-tip {
   margin-top: 50px;
+}
+
+/* line 208, source/eip.scss */
+#closing-tags {
+  margin-top: 10px;
 }
